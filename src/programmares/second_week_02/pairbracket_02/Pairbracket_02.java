@@ -1,5 +1,7 @@
 package programmares.second_week_02.pairbracket_02;
 
+import java.util.Stack;
+
 /**
  https://programmers.co.kr/learn/courses/30/lessons/12909
 
@@ -43,20 +45,21 @@ class Pairbracket_02 {
     }
 
     private boolean checkCount(String[] sArr) {
-        int count = 0;
+        Stack<String> checkStack = new Stack<>();
+
         for (String s : sArr) {
             if (s.equals("(")) {
-                count++;
+                checkStack.push(s);
             }
-            else if(count == 0) {
+            else if (checkStack.empty()) {
                 return false;
             }
             else {
-                count--;
+                checkStack.pop();
             }
         }
 
-        if (count == 0) {
+        if (checkStack.empty()) {
             return true;
         }
         else {

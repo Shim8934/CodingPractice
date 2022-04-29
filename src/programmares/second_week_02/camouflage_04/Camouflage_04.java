@@ -60,9 +60,7 @@ public class Camouflage_04 {
          */
 
         for (String[] s : clothes) {
-            for (String kinds : s) {
-                combination.put(kinds, combination.getOrDefault(kinds,0)+1);
-            }
+            combination.put(s[1], combination.getOrDefault(s[1],0)+1);
         }
 
         // 가짓수에 따른 경우의 수 모두 뽑기

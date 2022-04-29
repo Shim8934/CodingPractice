@@ -52,10 +52,17 @@ public class Camouflage_04 {
 
         HashMap<String, Integer> combination = new HashMap<>();
 
-        // 종류 가짓수 구하기
+        /* 종류 가짓수 구하기
         for(int i = 0; i<clothes.length; i++) {
             String kinds = clothes[i][1];
             combination.put(kinds, combination.getOrDefault(kinds,0)+1);
+        }
+         */
+
+        for (String[] s : clothes) {
+            for (String kinds : s) {
+                combination.put(kinds, combination.getOrDefault(kinds,0)+1);
+            }
         }
 
         // 가짓수에 따른 경우의 수 모두 뽑기

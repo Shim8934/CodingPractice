@@ -17,10 +17,10 @@ import java.util.*;
  - 배포는 하루에 한 번만 할 수 있으며, 하루의 끝에 이루어진다고 가정합니다. 예를 들어 진도율이 95%인 작업의 개발 속도가 하루에 4%라면 배포는 2일 뒤에 이루어집니다.
  */
 
-class developfunction_01 {
+class Developfunction_01 {
 
     public static void main(String[] args) throws Exception {
-        developfunction_01 T = new developfunction_01();
+        Developfunction_01 T = new Developfunction_01();
 
         System.out.println("developfunction_01 Start");
 
@@ -62,7 +62,12 @@ class developfunction_01 {
         Queue<Integer> complete = new LinkedList();
 
         for(int i = 0; i<progresses.length; i++) {
-            complete.add( (int) (Math.ceil((100.0 - progresses[i]) / speeds[i])));
+            for (int j = 1; ; j++) {
+                if ( (speeds[i] * j) >= (100 - progresses[i]) ) {
+                    complete.add(j);
+                    break;
+                }
+            }
         }
 
         while(!complete.isEmpty()) {

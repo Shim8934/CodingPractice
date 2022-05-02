@@ -1,6 +1,7 @@
 package programmares.second_week_02.stockprice_06;
 
 import java.util.Arrays;
+import java.util.Stack;
 
 /**
      https://programmers.co.kr/learn/courses/30/lessons/42584
@@ -21,21 +22,25 @@ public class StockPrice_06 {
 
         int[] prices = {1, 2, 3, 2, 3};
         System.out.println(Arrays.toString(T.solution(prices)));
-
     }
 
     public int[] solution(int[] prices) {
         int[] answer = new int [prices.length];
 
+        Stack<Integer> stack = new Stack<>();
+
         for (int i = 0; i < prices.length; i++) {
-            for (int j = i + 1; j < prices.length; j++) {
-                answer[i]++;
-                if (prices[i] > prices[j]) {
-                    break;
-                }
+            while (!stack.isEmpty() && prices[stack.peek()] > prices[i] ) {
+                answer[stack.peek()] = i - stack.peek();
+                stack.pop();
             }
+            stack.push(i);
         }
 
+        while(!stack.isEmpty()) {
+            answer[stack.peek()] = prices.length - stack.peek() - 1;
+            stack.pop();
+        }
         return answer;
     }
 

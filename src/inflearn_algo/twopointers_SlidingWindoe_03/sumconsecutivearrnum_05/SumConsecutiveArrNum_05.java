@@ -34,7 +34,7 @@ public class SumConsecutiveArrNum_05 {
         int sum = 0;
 
         int lt = 1;
-        for (int rt = 1; rt < N; rt++) {
+        for (int rt = 1; rt <= (N/2+1); rt++) {
             sum += rt;
             if (sum == N) {
                 answer++;

@@ -47,14 +47,24 @@ public class KindsOfSales_03 {
     public ArrayList<Integer> solution(int N, int K, int[] sales) {
         ArrayList<Integer> answer = new ArrayList<>();
 
-        HashSet<Integer> kinds = new HashSet<>();
+        HashMap<Integer, Integer> kinds = new HashMap<>();
+        // 첫 슬라이딩윈도우 세팅
+        for (int i = 0; i < K - 1; i++) {
+            kinds.put(sales[i], kinds.getOrDefault(sales[i], 0) + 1);
+        }
 
-        for (int i = 0; i < N - K + 1; i++) {
-            for (int j = i; j < i+K; j++) {
-                kinds.add(sales[j]);
-            }
+        int lt = 0;
+        // 첫 슬라이딩윈도우 다음 인덱스부터 넣기 시작 (하나씩 슬라이딩 이동으로!)
+        for (int rt = K - 1; rt < N; rt++) {
+            kinds.put(sales[rt], kinds.getOrDefault(sales[rt], 0) + 1);
             answer.add(kinds.size());
-            kinds.remove(i);
+
+            // 슬라이딩윈도우에서 빼 줘야하는 첫 인덱스 값을 0으로 만듦
+            kinds.put(sales[lt], kinds.get(sales[lt]) - 1);
+            if (kinds.get(sales[lt]) == 0) {
+                kinds.remove(sales[lt]);
+            }
+            lt++;
         }
 
         return answer;

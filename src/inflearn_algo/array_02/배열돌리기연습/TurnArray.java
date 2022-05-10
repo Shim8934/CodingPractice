@@ -1,4 +1,4 @@
-package inflearn_algo.array_02.카카오인턴코테2022_배열돌리기;
+package inflearn_algo.array_02.배열돌리기연습;
 
 public class TurnArray {
     public static void main(String[] args) {

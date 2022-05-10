@@ -1,4 +1,4 @@
-package inflearn_algo.StackQueue_05.pairbracket_01;
+package inflearn_algo.StackQueue_05.올바른괄호_01;
 
 import java.util.Stack;
 
